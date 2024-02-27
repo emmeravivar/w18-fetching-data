@@ -1,38 +1,104 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #2e2e2e;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2,
+h1 {
+  font-weight: bold;
+  margin-bottom: 2rem;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+  color: #8e8e8e;
+}
+
+h1 {
+  font-weight: 900;
+  letter-spacing: 1px;
+  border-bottom: 1px dotted rgb(108, 108, 108);
+  padding-bottom: 2rem;
+}
+
+h2 {
+  font-weight: 700;
+  border-bottom: 1px dotted rgb(108, 108, 108);
+  padding-bottom: 1rem;
+  color: #AF2417;
+
+}
+
+h3 {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  font-size: .9rem;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: .15rem;
+}
+
+.example-container {
+  background-color: #fff;
+  color:#2e2e2e;
+  padding: 1rem;
+}
+
+.box {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.card{
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.29);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.29);
+    flex: 0 0 44%;
+
+}
+.card-title {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #2e2e2e;
+}
+.card-title>h3 {
+  padding: 1rem;
+}
+.card-title > img{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 1rem;
+  margin-right:  1rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.card-body{
+  padding: 1rem;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
