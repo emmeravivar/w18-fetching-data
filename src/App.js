@@ -1,15 +1,34 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
 function App() {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const url = 'https://api.punkapi.com/v2/beers';
+  console.log('Leyendo error...', error);
+  /* With Fetch */
   useEffect(() => {
     console.log('Leyendo...');
     fetch(url) //<= Devuelve una promesa
-      .then(res => res.json()) // <= Esperar a que se resuelva la promesa
-      .then(data => setData(data)); // <= Asignar los datos al estado
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Error: ${res.status} - ${res.statusText}`);
+        }
+        return res.json();
+      }) // <= Esperar a que se resuelva la promesa
+      .then(data => setData(data)) // <= Asignar los datos al estado
+      .catch(err => setError(err));
   }, []);
+
+  /* With Axios */
+  // useEffect(() => {
+  //   console.log('Leyendo...');
+  //   axios
+  //     .get(url) //<= Devuelve una promesa
+  //     .then(res => res.data)
+  //     .then(data => setData(data)); // <= Esperar a que se resuelva la promesa
+  // }, []);
 
   return (
     <div className="container">
@@ -18,7 +37,10 @@ function App() {
       <div className="example-container">
         <h2>{url} </h2>
         <div className="box">
-          {data &&
+          {error ? (
+            <div>{error.toString()}</div>
+          ) : (
+            data &&
             data.map(item => (
               <div className="card" key={item.id}>
                 <div className="card-title">
@@ -30,7 +52,8 @@ function App() {
                   <p>{item.description}</p>
                 </div>
               </div>
-            ))}
+            ))
+          )}
         </div>
       </div>
       <h3>Eva María Mera Vivar</h3>
